@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mon Portfolio - Mes Travaux en BTS SIO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Ajout de Tailwind CSS -->
+<link rel="stylesheet" href="./media/css/output.css">
+<link rel="shortcut icon" href="./media/images/iconPF.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
+<style>
+    
+    .hamburger-menu {
+        display: none;
+    }
+
+    .menu__box {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.9);
+        top: 50px;
+        right: 0;
+        z-index: 50;
+        transition: max-height 0.3s ease;
+        max-height: 300px;
+    }
+
+    .menu__item {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .menu-active {
+        display: flex;
+    }
+
+    body {
+            background-size: cover;
+            background-position: center;
+        }
+    
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+        .hamburger-menu {
+            display: flex;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+    }
+
+    .nav-link {
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .arrow {
+        transition: transform 0.3s ease;
+    }
+
+    .rotate {
+        transform: rotate(90deg);
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in-down {
+        opacity: 0;
+        animation: fadeInDown 1s ease-in-out forwards;
+    }
+
+    .fade-in-down:nth-child(1) {
+        animation-delay: 0.2s;
+    }
+    .fade-in-down:nth-child(2) {
+        animation-delay: 0.4s;
+    }
+    .fade-in-down:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+    .fade-in-down:nth-child(4) {
+        animation-delay: 0.8s;
+    }
+    .fade-in-down:nth-child(5) {
+        animation-delay: 1s;
+    }
+
+        .zoom-on-hover {
+        transition: transform 0.1s ease-in-out;
+    }
+
+    .zoom-on-hover:hover {
+        transform: scale(1.1);
+    }
+
+    @keyframes rainbow {
+            to {background-position: 200%}
+        }
+
+        .rainbow-hover {
+            background: linear-gradient(90deg in hsl longer hue, red 0 50%) 0/400%;
+            animation: rainbow 6s linear infinite;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen relative overflow-x-hidden">
+
+
+    <header class="bg-black z-50 fixed top-0 w-screen p-4 md:p-10 shadow h-auto">
+        <div class="header-container flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <img src="media/images/iconPF.png" alt="Logo" class="w-12 h-12 md:w-24 md:h-24">
+                <h1 class="text-2xl sm:text-3xl md:text-6xl text-white font-bold font-DotGothic16">MINET Mathis</h1>
+            </a>
+
+            <div class="hamburger-menu" id="menu__toggle">
+                <div class="menu__btn">
+                    <span class="block w-8 h-1 bg-white mb-1"></span>
+                    <span class="block w-8 h-1 bg-white mb-1"></span>
+                    <span class="block w-8 h-1 bg-white"></span>
+                </div>
+            </div>
+
+            <ul class="menu__box">
+                <li class="menu__item"><a href="index.html" class="text-white font-bold font-DotGothic16">Ma présentation</a></li>
+            </ul>
+
+            <nav class="hidden md:flex">
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="nav-link text-white font-bold font-DotGothic16">Ma présentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="w-full mt-16 md:mt-32 flex-grow flex justify-center items-center relative py-10 z-20 mx-auto overflow-x-hidden">
+        <main>
+            <section>
+                <article>
+                    <div id="contenu">
+                        
+                        <div class='w-full h-full items-center'>
+                            <div class='flex justify-center'>
+                                <div class='p-6'>
+                                    <h1 class='text-white text-center p-6 text-6xl font-bold mb-4 underline'>Mes Stages en BTS SIO</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='flex justify-center'>
+                            <div class='w-full max-w-7xl p-6'>
+                                <button class='w-full bg-black bg-opacity-75 text-white shadow-md rounded-2xl p-6 text-3xl font-bold mb-4 flex justify-between items-center space-x-2 fade-in-down' onclick='toggleDropdown("travail1", this)'>
+                                    <span class='arrow'>&#9654;</span>
+                                    <span class='flex-grow'>2024 : Gendarmerie Villeneuve d'Ascq</span>
+                                </button>
+                                <div id='travail1' class='hidden w-full bg-gray p-6 shadow-lg rounded-lg mb-4 overflow-hidden transition-all duration-500 ease-in-out' style='max-height: 0;'>
+                                    <div class='p-6'>
+                                        <h2 class='text-xl font-bold underline mb-4'>Travail demandé :</h2>
+                                        <ul class='list-disc pl-6'>
+                                            <li>Conception d'une application de statistique</li>
+                                            <li>Réaliser et suivre un cahier des charges</li>
+                                            <li>L'application doit être accessible depuis n'importe quel poste de gendarmerie local</li>
+                                            <li>L'application doit être utilisable pour n'importe quel militaire qu'importe son niveau de compétence en informatique</li>
+                                            <li>Suivre une cohérence avec la charte graphique établie au préalable</li>
+                                            <li>Sécurité optimale étant donné que les données manipulées sont sensibles</li>
+                                        </ul>
+                                    </div>
+                                    <div class='p-6'>
+                                        <h2 class='text-xl font-bold underline mb-4'>Programmes et langages utilisés :</h2>
+                                        <ul class='list-disc pl-6'>
+                                            <li><strong>Programmes :</strong> Visual Studio Code</li>
+                                            <li><strong>Framework utilisé :</strong>Symfony</li>
+                                            <li><strong>Langages :</strong> PHP, HTML, CSS</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <button class='w-full bg-black bg-opacity-75 text-white shadow-md rounded-2xl p-6 text-3xl font-bold mb-4 flex justify-between items-center space-x-2 fade-in-down' onclick='toggleDropdown("travail2", this)'>
+                                    <span class='arrow'>&#9654;</span>
+                                    <span class='flex-grow'>2025 : Gendarmerie Villeneuve d'Ascq</span>
+                                </button>
+                                <div id='travail2' class='hidden w-full bg-gray p-6 shadow-lg rounded-lg mb-4 overflow-hidden transition-all duration-500 ease-in-out' style='max-height: 0;'>
+                                    <div class='p-6'>
+                                        <h2 class='text-xl font-bold underline mb-4'>Travail demandé :</h2>
+                                        <ul class='list-disc pl-6'>
+                                            <li>Reprise de mon application de statistique déjà créée au préalable lors de mon ancien stage</li>
+                                            <li>Réaliser et suivre un cahier des charges</li>
+                                            <li>Corriger tous les bugs et apporter des solutions viables face aux nouvelles demandes des militaires</li>
+                                            <li>L'application doit être maintenant sécurisée étant donné qu'elle sera utilisé à échelle nationale dans différent département, ajout d'un système de permission, roles.</li>
+                                            <li>Savoir aller au contact des utilisateurs pour proposer des solutions cohérentes face à leurs requêtes individuelles</li>
+                                        </ul>
+                                    </div>
+                                    <div class='p-6'>
+                                        <h2 class='text-xl font-bold underline mb-4'>Programmes et langages utilisés :</h2>
+                                        <ul class='list-disc pl-6'>
+                                            <li><strong>Programmes :</strong> PHPStorme</li>
+                                            <li><strong>Framework utilisé :</strong>Symfony</li>
+                                            <li><strong>Langages :</strong> PHP, HTML, CSS, MYSQL</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class='w-full h-full items-center'>
+                                    <div class='flex justify-center'>
+                                        <div class='p-6'>
+                                            <h1 class='text-white text-center p-6 text-6xl font-bold mb-4 underline'>Mes Travaux en BTS SIO</h1>
+                                        </div>
+                                    </div>
+                                    
+
+
+
+
+
+
+
+
+
+
+
+                                    <button class='w-full bg-black bg-opacity-75 text-white shadow-md rounded-2xl p-6 text-3xl font-bold mb-4 flex justify-between items-center space-x-2 fade-in-down' onclick='toggleDropdown("travail3", this)'>
+                                        <span class='arrow'>&#9654;</span>
+                                        <span class='flex-grow'>1ère année : Projet Bibliothèque</span>
+                                    </button>
+                                    <div id='travail3' class='hidden w-full bg-gray p-6 shadow-lg rounded-lg mb-4 overflow-hidden transition-all duration-500 ease-in-out' style='max-height: 0;'>
+                                        <div class='p-6'>
+                                            <h2 class='text-xl font-bold underline mb-4'>Travail demandé :</h2>
+                                            <ul class='list-disc pl-6'>
+                                                <li>Réalisation d'une application en pur PHP pour simuler un outil de gestion d'une bibliothèque.</li>
+                                                <li>Cette application doit être en lien avec une base de données MySQL</li>
+                                                <li>Suivit d'une nomenclature spécifique</li>
+                                                <li>Cahier des charges et timing à respecter</li>
+                                                <li>Documentation utilisateur à fournir</li>
+                                            </ul>
+                                        </div>
+                                        <div class='p-6'>
+                                            <h2 class='text-xl font-bold underline mb-4'>Programmes et langages utilisés :</h2>
+                                            <ul class='list-disc pl-6'>
+                                                <li><strong>Programmes :</strong> Visual Studio Code</li>
+                                                <li><strong>Langages :</strong> PHP, HTML, CSS, MYSQL</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                    <button class='w-full bg-black bg-opacity-75 text-white shadow-md rounded-2xl p-6 text-3xl font-bold mb-4 flex justify-between items-center space-x-2 fade-in-down' onclick='toggleDropdown("travail4", this)'>
+                                        <span class='arrow'>&#9654;</span>
+                                        <span class='flex-grow'>2ème année : Reprise de l'application PHP Bibliothèque</span>
+                                    </button>
+                                    <div id='travail4' class='hidden w-full bg-gray p-6 shadow-lg rounded-lg mb-4 overflow-hidden transition-all duration-500 ease-in-out' style='max-height: 0;'>
+                                        <div class='p-6'>
+                                            <h2 class='text-xl font-bold underline mb-4'>Travail demandé :</h2>
+                                            <ul class='list-disc pl-6'>
+                                                <li>Reprise de l'application Bibliothèque faite l'année d'avant</li>
+                                                <li>Ajout de fonctionnalités comme un système d'emprunt</li>
+                                                <li>Ajout d'un système de sécurité et d'authentification avec respect du RGPD</li>
+                                                <li>Ajout d'un système de mail</li>
+                                                <li>Suivit d'une nomenclature spécifique</li>
+                                                <li>Cahier des charges et timing à respecter</li>
+                                                <li>Documentation utilisateur à fournir</li>
+                                            </ul>
+                                        </div>
+                                        <div class='p-6'>
+                                            <h2 class='text-xl font-bold underline mb-4'>Programmes et langages utilisés :</h2>
+                                            <ul class='list-disc pl-6'>
+                                                <li><strong>Programmes :</strong> Visual Studio Code</li>
+                                                <li><strong>Framework utilisé :</strong>Symfony</li>
+                                                <li><strong>Langages :</strong> PHP, HTML, CSS</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+                                    <button class='w-full bg-black bg-opacity-75 text-white shadow-md rounded-2xl p-6 text-3xl font-bold mb-4 flex justify-between items-center space-x-2 fade-in-down' onclick='toggleDropdown("travail5", this)'>
+                                        <span class='arrow'>&#9654;</span>
+                                        <span class='flex-grow'>2ème année : Application Symfony simulant un outil de gestion de rendez-vous d'un hopital</span>
+                                    </button>
+                                    <div id='travail5' class='hidden w-full bg-gray p-6 shadow-lg rounded-lg mb-4 overflow-hidden transition-all duration-500 ease-in-out' style='max-height: 0;'>
+                                        <div class='p-6'>
+                                            <h2 class='text-xl font-bold underline mb-4'>Travail demandé :</h2>
+                                            <ul class='list-disc pl-6'>
+                                                <li>Création et design d'une application Symfony</li>
+                                                <li>Utilisation de solution de sécurité proposé par le framework</li>
+                                                <li>Ajout d'une API pour une future application React</li>
+                                                <li>Réaliser et suivre un cahier des charges</li>
+                                                <li>Suivit d'une nomenclature spécifique</li>
+                                                <li>Cahier des charges et timing à respecter</li>
+                                                <li>Documentation utilisateur à fournir</li>
+                                            </ul>
+                                        </div>
+                                        <div class='p-6'>
+                                            <h2 class='text-xl font-bold underline mb-4'>Programmes et langages utilisés :</h2>
+                                            <ul class='list-disc pl-6'>
+                                                <li><strong>Programmes :</strong> Visual Studio Code</li>
+                                                <li><strong>Framework utilisé :</strong>Symfony</li>
+                                                <li><strong>Langages :</strong> PHP, HTML, CSS</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+                                
+                            </div>
+                
+                        </div>
+
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <footer class="p-6 bg-black text-white flex flex-col md:flex-row items-center justify-evenly text-lg z-10 font-DotGothic16">
+        <p class='p-6 text-lg md:text-4xl'>Mon Portfolio</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu__toggle');
+            const menuBox = document.querySelector('.menu__box');
+
+            menuToggle.addEventListener('click', function() {
+                menuBox.classList.toggle('menu-active');
+                if (menuBox.style.display === 'flex') {
+                    menuBox.style.display = 'none';
+                } else {
+                    menuBox.style.display = 'flex';
+                }
+            });
+        });
+
+    function toggleDropdown(id, button) {
+        var element = document.getElementById(id);
+        var arrow = button.querySelector('.arrow');
+        
+        if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+            element.style.maxHeight = element.scrollHeight + 'px';
+            arrow.classList.add('rotate');
+        } else {
+            element.style.maxHeight = '0';
+            arrow.classList.remove('rotate');
+            setTimeout(function() {
+                element.classList.add('hidden');
+            }, 500);
+        }
+    }
+    </script>
+</body>
+</html>
